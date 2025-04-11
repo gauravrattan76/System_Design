@@ -1,0 +1,94 @@
+proxy vs reverse proxy vs load balancer vs cdn
+______
+
+
+are super common in web architecture, and they all deal with routing traffic, but in different directions and purposes.
+
+
+1. Proxy (aka Forward Proxy)
+➡️ Direction: Client → Proxy → Internet
+* The client connects to a proxy server, which then requests resources on behalf of the client.
+🧠 Used for:
+* Hiding client identity (IP)
+* Controlling and filtering client access
+* Corporate firewalls or parental controls
+💡 Think of:
+A user using a VPN or proxy to access a website
+txt
+CopyEdit
+User → Proxy → Google.com
+
+
+
+2. Reverse Proxy
+➡️ Direction: Internet → Reverse Proxy → Server
+* The client thinks it's talking to a server, but it's actually talking to a reverse proxy which forwards the request to the real backend.
+‘
+Used for:
+* Hiding backend servers
+* SSL termination
+* Load balancing
+* Caching
+* API gateway
+
+
+
+NGINX or Apache sitting in front of your Node.js or Java app
+txt
+CopyEdit
+Browser → NGINX (Reverse Proxy) → App Server
+
+
+
+
+
+3. Load Balancer
+➡️ Direction: Client → Load Balancer → Multiple Servers
+* Distributes traffic across multiple backend servers to balance load, improve speed, and increase redundancy.
+
+
+
+Used for:
+* High availability (HA)
+* Scalability
+* Preventing overload on any one server
+
+
+
+AWS ELB, HAProxy, or NGINX sending requests to several app servers
+
+
+          +--> App Server 1
+Client -->|--> App Server 2
+          +--> App Server 3
+Sometimes, a reverse proxy is also a load balancer, like NGINX.
+
+
+4.4. CDN (Content Delivery Network)
+➡️ Direction: User → Nearest CDN Edge → Cached Content / Origin
+* A global network of edge servers that cache and serve static content close to users.
+
+
+Used for:
+* Speed (faster load times by proximity)
+* Reducing origin server load
+* Serving static files (JS, CSS, images)
+* DDoS protection
+💡 Think of:
+Cloudflare, Akamai, AWS CloudFront serving your React app files
+txt
+CopyEdit
+User → CDN Edge (cached JS, CSS) → Origin (only if not cached)
+
+
+
+Browser
+  ↓
+Cloudflare (CDN + SSL)
+  ↓
+NGINX (Reverse Proxy + Load Balancer)
+  ↓         ↓
+ App1     App2 (React + API)
+
+
+
