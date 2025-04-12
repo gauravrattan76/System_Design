@@ -1,0 +1,81 @@
+Load Balancer and Algorithms
+
+Load balancers are crucial components in distributed systems that distribute incoming network traffic across multiple servers. This ensures no single server becomes a bottleneck, improving performance, reliability, and availability.
+
+
+A load balancer acts as a reverse proxy that distributes client requests to multiple backend servers. It sits between the client and the server pool and makes real-time decisions based on various algorithms and metrics.
+
+
+
+1. Round Robin
+Distributes requests in a circular order across servers.
+* 🔹 Simple and fast
+* 🔹 Doesn't account for server load
+📌 Use case: When all servers are equally capable.
+
+
+
+
+2. Weighted Round Robin
+Each server gets a weight; servers with higher weights get more requests.
+* 🔹 Supports uneven server capacity
+* 🔹 Slightly more complex
+📌 Use case: When servers have different processing power.
+
+
+
+3. Least Connections
+Sends traffic to the server with the fewest active connections.
+* 🔹 Dynamic load handling
+* 🔹 Ideal for long-lived sessions
+📌 Use case: Real-time applications like VoIP or video calls.
+
+
+4. Weighted Least Connections
+Adds weights to the least-connections strategy.
+* 🔹 Combines connection count and server capability
+📌 Use case: Mixed environments with varying server strengths and session lengths.
+
+
+5. Least Response Time
+Directs traffic to the server with the lowest average response time.
+* 🔹 Measures server responsiveness
+* 🔹 Good for latency-sensitive apps
+📌 Use case: APIs or microservices where speed is critical.
+
+
+6. IP Hash
+A hash of the client's IP determines the server.
+* 🔹 Ensures session persistence (same client hits same server)
+* 🔹 Poor load distribution if IPs aren't diverse
+📌 Use case: Sticky sessions (e.g., login sessions, shopping carts).
+
+
+
+7. URL Hash (or Path-based)
+Hashing based on URL/path to route requests.
+* 🔹 Useful for content caching
+* 🔹 Ensures the same content is served from the same server
+📌 Use case: CDNs or microservices where different endpoints go to different servers.
+
+
+
+8. Random
+Randomly selects a server for each request.
+* 🔹 Super simple
+* 🔹 Surprisingly effective in certain cases
+📌 Use case: Light-load environments or where randomness helps avoid predictable load.
+
+
+
+9. Custom (Application-Aware)
+Uses application-specific logic—like server CPU load, memory, or real-time health.
+* 🔹 Most intelligent
+* 🔹 Often requires integration with monitoring tools
+📌 Use case: Mission-critical systems with variable workloads.
+
+
+Load Balancer Types
+* Hardware Load Balancers (e.g., F5, Citrix ADC)
+* Software Load Balancers (e.g., HAProxy, Nginx, Apache)
+* Cloud-based Load Balancers (e.g., AWS ELB, Azure Load Balancer, Google Cloud Load Balancing)
