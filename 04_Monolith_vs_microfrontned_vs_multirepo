@@ -1,0 +1,123 @@
+1. Monolithic Frontend Architecture
+
+
+All UI code (pages, components, logic, styles) lives in a single codebase and is built and deployed together as one unit.
+
+
+✅ Pros:
+* Simple to develop and deploy in early stages.
+* Easier code sharing and state management across the app.
+* No inter-app communication complexity.
+* One set of tooling (Webpack, Babel, etc.).
+
+
+
+❌ Cons:
+* Scales poorly with large teams.
+* CI/CD becomes slow and fragile (one broken module can break the whole app).
+* Difficult to modularize ownership.
+* Long startup/build times.
+* Harder to do A/B testing or incremental updates.
+
+
+
+Use If:
+* You have a small team or a small to medium app.
+* Deployment is not frequent or complex.
+
+
+
+___________________
+
+
+
+2. Micro Frontend Architecture
+📌 What It Is:
+The front-end is split into independent, self-contained applications (micro frontends), each owned by a team and responsible for a feature/domain (e.g., Booking, Search, Payments).
+Each micro frontend can be:
+* A separate app embedded via iFrame, module federation, or custom loader.
+* Built and deployed independently.
+
+
+✅ Pros:
+* Team autonomy – teams can build, test, and deploy independently.
+* Scalable development – good for large teams/products.
+* Faster CI/CD – smaller bundles.
+* Can use different tech stacks per team if needed.
+
+
+
+❌ Cons:
+* Complex setup (routing, inter-app communication, shared state).
+* Potential for inconsistent design and user experience.
+* Overhead in performance and initial load time.
+* Higher maintenance cost.
+
+
+
+🛠️ Popular Techniques:
+* Webpack Module Federation
+* Single SPA
+* iFrames (legacy)
+* Web Components
+
+
+_________________
+
+
+📂 3. Multi-Repo UI Architecture
+📌 What It Is:
+Each feature, component library, or module lives in its own repository. Can be used in both monolith and micro frontend contexts.
+
+
+
+✅ Pros:
+* Code isolation by repo.
+* Flexible permissions and repo-specific pipelines.
+* Independent versioning and CI/CD per repo.
+* Better control over team responsibilities.
+
+
+
+❌ Cons:
+* Dependency management becomes hard (syncing shared libraries).
+* Requires tooling for integration and release (e.g., Lerna, Nx, Turborepo).
+* Harder to refactor across features.
+* More boilerplate and setup.
+
+
+
+🛠️ Popular Tools:
+* Nx
+* Lerna
+* Turborepo
+* Git submodules/subtrees
+📦 Use If:
+* You want separate lifecycles for different modules.
+* Teams are working on distinct apps or components.
+
+
+
+
+Comparison Table
+Feature/Criteria	Monolith	Micro Frontend	Multi-Repo UI
+Codebase Size	Single large repo	Many small apps	Many separate repos
+Team Autonomy	Low	High	High
+Independent Deployment	No	Yes	Yes (with setup)
+Build Time	Long (whole app)	Short (per app)	Short (per repo)
+CI/CD Complexity	Simple	Complex	Moderate to complex
+Tech Stack Flexibility	Single	Multiple possible	Multiple possible
+DX (Developer Experience)	Great (initially)	Complex coordination	Repo management overhead
+Suitability	Small to medium apps	Large, modular systems	Modular teams
+
+
+Application to Airline Booking System
+Module	Candidate UI Arch
+Home / Search	Micro Frontend
+Booking Flow	Micro Frontend
+User Profile	Micro Frontend
+Admin Dashboard	Multi-Repo
+Shared Components	Monorepo (or shared lib)
+
+
+
