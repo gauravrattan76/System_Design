@@ -1,0 +1,66 @@
+Vertical scaling -
+
+
+Optimise performance and increase throughput with the same resource , it’s called vertical scaling.
+
+
+Certainly! Let's delve into the concepts of data preprocessing and cron jobs, both of which are fundamental in their respective domains.
+
+🧹 What is Data Preprocessing?
+Data preprocessing is a crucial step in data science and machine learning that involves transforming raw data into a clean and usable format. This process ensures that the data is accurate, consistent, and ready for analysis or modeling.
+Key Steps in Data Preprocessing:
+1. Handling Missing Values: Identifying and addressing gaps in the data, either by removing incomplete records or imputing missing values using statistical methods like mean, median, or mode.Simplilearn.com
+2. Encoding Categorical Data: Converting non-numeric categories into numerical formats using techniques such as one-hot encoding or label encoding, enabling algorithms to process them effectively.
+3. Feature Scaling: Standardizing or normalizing data to ensure that numerical features have a similar scale, which is essential for many machine learning algorithms.
+4. Splitting the Dataset: Dividing the data into training, validation, and test sets to evaluate the performance of models and prevent overfitting.Simplilearn.com
+5. Data Transformation: Applying mathematical transformations to features to enhance model performance, such as logarithmic scaling or polynomial features.
+Effective data preprocessing improves model accuracy, reduces training time, and enhances the interpretability of results.
+
+🕒 What is a Cron Job?
+A cron job is a scheduled task in Unix-like operating systems that runs automatically at specified intervals. It's managed by the cron daemon, which executes commands or scripts at predetermined times, dates, or intervals.
+Common Applications of Cron Jobs:
+* Automated Backups: Scheduling regular backups of databases or files to ensure data integrity.Cronjob Manager
+* System Maintenance: Running scripts for tasks like cleaning up temporary files or updating software packages.
+* Data Synchronization: Automating the transfer of data between systems or services at set intervals.
+* Email Notifications: Sending out scheduled reports or alerts to users.Seobility
+* Website Monitoring: Checking the status of websites or services to ensure they are operational.
+Cron jobs are defined in a configuration file called crontab, where users specify the timing and the command to execute. Wikipedia
+
+
+Have pre processing - like a cron job
+
+
+Avoid single point of failure - master slave
+
+
+
+Higher more resources - horizontal scaling, burn machine of similar types to get work done
+
+
+Microservice architecture.
+
+
+__________________________
+
+Distributed system
+(partioning)
+
+
+__________________-
+
+
+
+Load balancer
+
+
+_________________-
+
+
+Logging and matrices
+
+
+______________
+
+
+
+Extensible
