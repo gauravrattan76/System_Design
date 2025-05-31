@@ -1,0 +1,48 @@
+Key concepts in system design-
+__________________________________________
+
+
+
+1. Sacalbility- a system is called scalable when it doesn’t need to be redesigned to maintain affective performance as the increase in load / traffic
+
+
+
+____________________________-
+
+
+
+2. Reliability- a system is described as reliable even if keeps delivering its services even when several of it software/hardware components fail
+
+A system if reliable if request for the data return the same data
+
+
+
+__________________________________________
+
+Availablity-
+
+
+The uptime of a website is critical.
+
+
+Availability is a typically given as a percentage of time a system is expected to to be avialable (99.999) percent
+
+
+____________________
+
+Latency / efficency-
+
+
+Latency - time required to transmit a message from one location to another location with in distributed system
+
+
+Latency: The time it takes for a single operation or request to complete. This includes the time from when a request is initiated to when the response is received. It's typically measured in milliseconds (ms) or microseconds (µs) .
+Throughput: The number of operations or requests a system can handle in a given time frame, often measured in requests per second (RPS) or transactions per second (TPS) .
+
+
+Bandwidth/ throughput-
+
+The amount of data that can be transferred per uint of time in a stable system
+
+
+_______________——
