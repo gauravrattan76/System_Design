@@ -1,0 +1,55 @@
+CSRF  Attack-
+_______________
+
+Cross-Site Request Forgery (CSRF) is a web security vulnerability that tricks a user's browser into executing unwanted actions on a web application in which the user is authenticated. This can lead to unauthorized actions such as changing account details, initiating transactions, or altering user settings.
+
+
+Login to bank account - the bank uses cookies for authentication - 
+
+Open a tab and visits a malicious site, the hacker injects invisible hidden request, it calls the bank api
+
+
+
+It includes session key and see that we wanted money
+
+_______________________________________________
+
+🧠 How CSRF Works
+CSRF exploits the trust that a web application has in a user's browser. Here's a step-by-step breakdown:
+1. User Authentication: The user logs into a trusted website (e.g., a bank) and receives a session cookie.
+2. Visiting a Malicious Site: While still logged in, the user visits a malicious website crafted by an attacker.
+3. Malicious Request Sent: The malicious site contains code (like an HTML form or script) that automatically sends a request to the trusted site, using the user's session cookie.
+4. Trusted Site Processes Request: Believing the request is legitimate, the trusted site processes it, potentially leading to unauthorized actions.
+
+
+ Mitigation Strategies
+To protect against CSRF attacks, developers should implement the following measures:
+
+Anti-CSRF Tokens: Generate unique, unpredictable tokens for each user session. Include these tokens in forms and verify them on the server side to ensure the request's legitimacy. 
+Acunetix
+
+SameSite Cookie Attribute: Set the SameSite attribute in cookies to control their inclusion in cross-site requests. Using SameSite=Strict or SameSite=Lax can prevent browsers from sending cookies with cross-origin requests, mitigating CSRF risks.
+
+Avoid Sensitive Actions via GET Requests: Ensure that state-changing operations (like form submissions) use POST requests instead of GET, as GET requests can be triggered inadvertently.
+
+Double Submit Cookies: Send a CSRF token both as a cookie and as a request parameter. The server then verifies that both tokens match, confirming the request's authenticity.
+
+Verify Referer and Origin Headers: Check the Referer and Origin headers of incoming requests to ensure they originate from trusted sources. However, be cautious, as these headers can sometimes be absent or manipulated.
+
+🛠️ Developer Best Practices
+Use Established Frameworks: Leverage web frameworks that have built-in CSRF protection mechanisms.
+
+Regularly Update Dependencies: Keep all libraries and dependencies up to date to patch known vulnerabilities.
+
+Educate Users: Encourage users to log out of applications when not in use and to be cautious of suspicious links or emails.
+
+Implement Multi-Factor Authentication (MFA): Adding an extra layer of security can prevent unauthorized actions, even if a CSRF attack is attempted.
+
+
+
+
+
+
+
+
+
