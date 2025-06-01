@@ -1,0 +1,55 @@
+What is an api gateway-
+____________________________________
+
+An API gateway is a server that acts as an intermediary between clients (such as web or mobile applications) and backend services. It manages, routes, and secures API requests, providing a unified entry point for accessing various services within an application architecture.
+
+🔧 Core Functions of an API Gateway
+
+1. Request Routing: Directs incoming API calls to the appropriate backend services based on the request's endpoint and parameters. Red Hat
+2. Authentication and Authorization: Validates the identity of clients and ensures they have the necessary permissions to access specific resources. 
+3. Rate Limiting and Throttling: Controls the number of requests a client can make in a given timeframe to prevent abuse and ensure fair usage. metricfire.com
+4. Caching: Stores responses to frequent requests, reducing the need to query backend services repeatedly and improving response times. metricfire.com
+5. Protocol and Data Transformation: Converts requests and responses between different formats or protocols to ensure compatibility between clients and services. IBM
+6. Monitoring and Analytics: Tracks API usage, performance metrics, and error rates, providing insights for optimization and troubleshooting. 
+
+🚀 Benefits of Using an API Gateway
+* Simplified Client Interaction: Clients interact with a single endpoint, abstracting the complexity of multiple backend services. Akamai+5Red Hat+5TIBCO+5
+* Enhanced Security: Centralizes security measures, such as authentication and input validation, reducing vulnerabilities. 
+* Improved Performance: Caching and load balancing capabilities lead to faster response times and efficient resource utilization. Red Hat
+* Scalability: Facilitates the addition or modification of services without impacting clients, supporting agile development and deployment. Check Point Software+1Akamai+1
+
+🧰 Popular API Gateway Solutions
+* Amazon API Gateway: A fully managed service that enables developers to create, publish, maintain, monitor, and secure APIs at any scale. Amazon Web Services, Inc.+1AWS Documentation+1
+* Kong: An open-source API gateway and microservices management layer, delivering high performance and extensibility.
+* Apigee: A platform by Google Cloud for developing and managing APIs with robust analytics and security features.
+* Azure API Management: Microsoft's solution for publishing APIs to external and internal consumers, offering features like throttling, caching, and transformation.
+* MuleSoft Anypoint Platform: Provides tools for designing, deploying, and managing APIs, with capabilities for integration and analytics. Mulesoft
+______________________________
+
+
+Rate limiting -
+
+🔹 Rate Limiting
+* Purpose: To cap the number of requests a client can make to an API within a specified time frame, ensuring fair usage and preventing abuse.Nordic APIs+1apidog+1
+* Mechanism: Sets a fixed limit on the number of requests (e.g., 1000 requests per hour). Once the limit is reached, additional requests are denied until the time window resets.Medium
+* Use Cases:
+    * Preventing denial-of-service (DoS) attacks.
+    * Ensuring equitable access among users.
+    * Protecting backend resources from being overwhelmed.apidog+1Medium+1Axway Blog+1Nordic APIs+1
+* Example: An API allows each user to make up to 500 requests per day. If a user exceeds this, further requests are blocked until the next day.
+
+_____________________________________
+
+
+🔹 Throttling
+* Purpose: To regulate the rate of incoming requests, preventing sudden spikes that could overwhelm the system.GeeksforGeeks
+* Mechanism: Controls the number of requests processed over a short period, often by delaying or queuing excess requests rather than rejecting them outright.
+* Use Cases:
+    * Managing traffic during peak usage times.
+    * Ensuring system stability by smoothing out request bursts.
+    * Providing consistent performance to all users.WIRED+4DZone+4apidog+4
+* Example: An API processes up to 100 requests per second. If 200 requests arrive simultaneously, 100 are processed immediately, and the remaining 100 are delayed or queued for later processing.
+
+
+
+
