@@ -1,0 +1,38 @@
+How to pass cookie from parent to child-
+_____________________________________________________
+
+
+In a micro-frontend architecture, ensuring that child applications inherit the authenticated state from the parent application involves careful handling of cookies and authentication tokens. Here's how this process typically works:Amazon Web Services, Inc.
+
+🍪 How Cookies Are Shared Between Parent and Child Apps
+1. Shared Domain Strategy:
+    * Same-Origin Policy: Browsers enforce the Same-Origin Policy, which restricts how documents or scripts loaded from one origin can interact with resources from another origin. To allow cookies to be accessible across parent and child applications, they should be served from the same domain or subdomains.
+    * Setting the Domain Attribute: When the server sets the authentication cookie, it can specify the Domain attribute to a common domain (e.g., .example.com). This allows subdomains like app.example.com and child.example.com to access the cookie.Medium
+2. Cookie Attributes Configuration:
+    * HttpOnly: Ensures that the cookie is inaccessible to JavaScript, mitigating XSS attacks.
+    * Secure: Ensures that the cookie is only sent over HTTPS connections.
+    * SameSite:
+        * Lax: Cookies are sent on same-site requests and top-level navigation GET requests.
+        * None: Cookies are sent on all requests, including cross-site requests, but must be used with the Secure attribute.
+3. Properly configuring these attributes ensures that cookies are sent with requests from both parent and child applications, provided they share the same domain.
+
+🔄 Alternative Authentication Sharing Methods
+If parent and child applications are on different domains or if sharing cookies is not feasible, consider the following approaches:
+1. Token Propagation via Initialization Parameters:
+    * The parent application can pass authentication tokens to child applications during their initialization.
+    * This can be done through JavaScript function calls, global variables, or custom events.
+    * Child applications use the received token to authenticate API requests.
+2. Silent Authentication:
+    * Child applications can perform silent authentication by embedding an invisible iframe that points to the authentication provider.
+    * If the user is already authenticated, the provider responds with a valid token without prompting the user.
+    * This method relies on the authentication provider supporting silent authentication and proper CORS configurations.DEV Community+1Auth0 Community+1
+3. Centralized Authentication Service:
+    * Implement a centralized authentication service that handles login and token issuance.
+    * Both parent and child applications redirect users to this service for authentication.
+    * After successful authentication, the service redirects users back to the originating application with the necessary tokens.
+
+✅ Best Practices
+* Consistent Authentication Mechanism: Ensure that all applications use a consistent method for authentication to simplify token sharing and validation.
+* Secure Token Storage: Store tokens securely, preferably in HttpOnly cookies, to prevent access via JavaScript.
+* Token Expiration and Renewal: Implement mechanisms to handle token expiration and renewal seamlessly across applications.
+* Cross-Origin Resource Sharing (CORS): Configure CORS policies appropriately if applications are on different domains to allow necessary cross-origin requests.
