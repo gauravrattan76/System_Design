@@ -1,0 +1,136 @@
+
+Waist to improve performnacr of page
+
+
+1. Avoid Unnecessary Re-renders (Core Optimization)
+🧠 Problem
+Every state/prop change triggers re-renders → wasted work
+
+✅ Solution: Memoization
+React.memo
+
+const Child = React.memo(({ data }) => {
+  return <div>{data}</div>;
+});
+
+👉 Prevents re-render if props don’t change
+
+useMemo
+
+const sorted = useMemo(() => heavySort(data), [data]);
+
+👉 Avoid recomputing expensive values
+
+useCallback
+
+const handleClick = useCallback(() => {}, []);
+
+👉 Prevents new function reference
+
+⚠️ Trade-off
+* Overuse = memory overhead + complexity
+
+
+
+2. Code Splitting & Lazy Loading
+🧠 Problem
+Large JS bundle slows initial load
+
+✅ Solution
+Split code into chunks and load on demand
+
+const Dashboard = React.lazy(() => import('./Dashboard'));
+
+
+Deep Insight
+* Splitting happens via dynamic import
+* Lazy loading controls when it loads
+
+⚠️ Trade-off
+* Too many chunks → more network calls
+
+
+3. Reduce Bundle Size
+🧠 Problem
+Large bundle = slow download + parse time
+
+✅ Techniques
+* Tree shaking
+* Remove unused libs
+* Import selectively
+
+import debounce from 'lodash/debounce';
+
+
+
+4. Optimize API Calls (Caching + Debounce)
+🧠 Problem
+Too many network calls + repeated fetching
+
+✅ Solutions
+Debounce
+
+const debounced = debounce(fetchData, 300);
+
+Caching
+Use:
+* React Query / SWR
+
+🧠 Insight
+👉 Network latency often > rendering cost
+
+
+
+5.5. Virtualization (Large Lists)
+🧠 Problem
+Rendering 1000+ DOM nodes = slow
+
+✅ Solution
+Render only visible items
+
+<List height={500} itemCount={1000} itemSize={50} />
+
+
+
+8. Use Concurrent Features (useTransition)
+🧠 Problem
+Heavy updates block UI
+
+✅ Solution
+
+const [isPending, startTransition] = useTransition();
+
+startTransition(() => {
+  setData(newData);
+});
+
+
+
+
+9. Optimize Images & Assets
+🧠 Problem
+Images are biggest payload
+
+✅ Solutions
+* Lazy load images
+* Use WebP
+* Use CDN
+
+
+
+
+10. Profiling & Measuring Performance
+🧠 Problem
+Blind optimization = wasted effort
+
+✅ Tools
+* React DevTools Profiler
+
+🧠 What to look for
+* Frequent re-renders
+* Slow components
+* Wasted renders
+
+
+
+
