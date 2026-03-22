@@ -2,6 +2,10 @@ proxy vs reverse proxy vs load balancer vs cdn
 ______
 
 
+https://blog.algomaster.io/p/load-balancer-vs-reverse-proxy-vs-api-gateway
+
+
+
 are super common in web architecture, and they all deal with routing traffic, but in different directions and purposes.
 
 
